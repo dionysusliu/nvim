@@ -30,4 +30,16 @@ vim.diagnostic.config({
     update_in_insert = false,
 })
 
+-- 配置LSP浮动窗口（hover、signature help等）
+-- 设置自动换行和最大宽度，防止内容超出窗口
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "rounded"
+    opts.max_width = opts.max_width or math.floor(vim.o.columns * 0.7)
+    opts.max_height = opts.max_height or math.floor(vim.o.lines * 0.5)
+    opts.wrap = true  -- 启用自动换行
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 vim.lsp.enable({ "ty", "clangd", "marksman" })
