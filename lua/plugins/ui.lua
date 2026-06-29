@@ -4,6 +4,42 @@ return {
     -- monokai theme
     {
         "tanvirtin/monokai.nvim",
+        opts = {
+            -- transparent = vim.g.transparent_enabled,
+            -- styles = {
+            --     sidebars = "transparent",
+            --     floats = "transparent",
+            -- },
+        },
+    },
+
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+
+    -- catppuccin theme
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        opts = {
+            flavour = "latte",
+            integrations = {
+                flash = true,
+            },
+            custom_highlights = function(colors)
+                return {
+                    -- Flash.nvim: stronger contrast under Latte light theme
+                    FlashBackdrop = { fg = colors.overlay0 },
+                    FlashMatch = { fg = colors.base, bg = colors.sky, bold = true },
+                    FlashCurrent = { fg = colors.base, bg = colors.peach, bold = true },
+                    FlashLabel = { fg = "#ffffff", bg = colors.red, bold = true },
+                }
+            end,
+        },
+    },
+
+    {
+        "xiyaowong/transparent.nvim",
+        lazy = false,
     },
 
     -- lualine statusline

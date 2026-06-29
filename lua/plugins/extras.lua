@@ -1,3 +1,5 @@
+local os = require("utils.os")
+
 -- Extra utility plugins
 
 return {
@@ -13,6 +15,7 @@ return {
     -- im-select: automatic input method switching
     {
         "keaising/im-select.nvim",
+        enabled = os.is_mac,
         config = function()
             require("im_select").setup({
                 default_im_select = "com.apple.keylayout.US",

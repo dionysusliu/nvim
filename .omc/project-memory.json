@@ -1,0 +1,80 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776283148375,
+  "projectRoot": "/Users/chuang/.config/nvim",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "lsp": {
+      "path": "lsp",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776283148370,
+      "keyFiles": [
+        "clangd.lua",
+        "gopls.lua",
+        "ty.lua"
+      ]
+    },
+    "lua": {
+      "path": "lua",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1776283148371,
+      "keyFiles": [
+        "colorscheme.lua",
+        "keymaps.lua",
+        "lsp.lua",
+        "options.lua"
+      ]
+    },
+    "lua/utils": {
+      "path": "lua/utils",
+      "purpose": "Utility functions",
+      "fileCount": 1,
+      "lastAccessed": 1776283148372,
+      "keyFiles": [
+        "os.lua"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "lua/plugins/ui.lua",
+      "accessCount": 2,
+      "lastAccessed": 1776283219377,
+      "type": "file"
+    },
+    {
+      "path": "lua/colorscheme.lua",
+      "accessCount": 2,
+      "lastAccessed": 1776283227704,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

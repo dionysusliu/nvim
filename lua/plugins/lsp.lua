@@ -12,15 +12,15 @@ return {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason-org/mason.nvim" },
         opts = {
-            ensure_installed = { "clangd", "marksman" },
+            ensure_installed = { "clangd", "marksman", "gopls", "ruff", "ty" },
+            -- rustaceanvim manages rust_analyzer; exclude it from auto-enable
+            -- to avoid a duplicate LSP client attaching to rust buffers.
+            automatic_enable = {
+                exclude = { "rust_analyzer" },
+            },
         },
-        config = function()
-            -- configure clangd using Neovim built-in LSP API
-            vim.lsp.config("clangd", {
-                cmd = { "clangd", "--background-index" },
-                filetypes = { "c", "cpp", "objcpp", "cuda", "proto" },
-                root_markers = { ".git", "compile_commands.json", "compile_flags.txt", ".clangd" },
-            })
+        config = function(_, opts)
+            require("mason-lspconfig").setup(opts)
 
             -- configure marksman
             vim.lsp.config("marksman", {
@@ -29,9 +29,19 @@ return {
                 root_markers = { ".git", ".marksman.toml" },
             })
 
-            vim.lsp.enable("clangd")
             vim.lsp.enable("marksman")
         end,
+    },
+
+    -- typescript-tools: TypeScript/JavaScript language support
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "neovim/nvim-lspconfig",
+        },
+        lazy = false,
+        opts = {},
     },
 
     -- rustaceanvim: Rust language support

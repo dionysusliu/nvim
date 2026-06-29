@@ -13,13 +13,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local lsp = vim.lsp
 	    local bufopts = { noremap = true, silent = true }
 
-        keymap.set("n", "gr", lsp.buf.references, bufopts) --- reference
-        keymap.set("n", "gd", lsp.buf.definition, bufopts) --- definition
+        keymap.set("n", "gr", require('telescope.builtin').lsp_references, bufopts) --- reference
+        keymap.set("n", "gd", require('telescope.builtin').lsp_definitions, bufopts) --- definition
         keymap.set("n", "<space>rn", lsp.buf.rename, bufopts) --- rename
         keymap.set("n", "K", lsp.buf.hover, bufopts) --- hover
+        keymap.set("n", "E", vim.diagnostic.open_float, bufopts) -- diagnostic messages
         keymap.set("n", "<space>f", function()
             vim.lsp.buf.format({ async = true })
         end, bufopts) --- formatter
+        keymap.set("n", "<space>ca", lsp.buf.code_action, bufopts) --- code action, like quickfix, refractor, ...
     end
 })
 
@@ -42,4 +44,4 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-vim.lsp.enable({ "ty", "clangd", "marksman" })
+vim.lsp.enable({ "ty", "ruff", "clangd", "marksman", "gopls" })
